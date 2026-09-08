@@ -1,12 +1,15 @@
-/* Variáveis de Cores e Fontes para manter o padrão elegante */
 :root {
-    --bg-color: #0d0d0f;        /* Fundo principal bem escuro */
-    --card-bg: #161619;         /* Fundo do cartão levemente mais claro */
-    --text-main: #f0f0f0;       /* Texto branco suave */
-    --text-muted: #8c8c94;      /* Texto cinza para descrições */
-    --accent: #3e4cd1;          /* Azul para detalhes */
+    --bg: #0a0a0d;
+    --bg-elevated: #131318;
+    --ink: #ececef;
+    --ink-dim: #85858f;
+    --accent: #4d5be0;
+    --accent-soft: rgba(77, 91, 224, 0.16);
+    --line: rgba(255, 255, 255, 0.07);
+
     --font-title: 'Playfair Display', serif;
     --font-text: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -16,73 +19,137 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    background-color: var(--bg);
+    color: var(--ink);
     font-family: var(--font-text);
-    padding: 80px 20px;
     line-height: 1.6;
+    padding: 90px 24px 60px;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* Cabeçalho */
+.grid-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        radial-gradient(600px 400px at 50% -10%, var(--accent-soft), transparent 70%),
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: auto, 64px 64px, 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+/* ============================================
+   Hero
+   ============================================ */
 .hero {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 80px auto;
+    max-width: 720px;
+    margin: 0 auto 70px auto;
+}
+
+.hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+    margin-bottom: 18px;
 }
 
 .hero h1 {
     font-family: var(--font-title);
-    font-size: 3.5rem;
+    font-size: 3.1rem;
     font-weight: 600;
     letter-spacing: -0.5px;
-    margin-bottom: 3px;
     color: #ffffff;
+    min-height: 1.3em;
 }
 
-.hero h2 {
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-    color: #ffffff;
+.cursor {
+    display: inline-block;
+    color: var(--accent);
+    margin-left: 3px;
+    animation: blink 1s step-end infinite;
 }
 
-.hero p {
-    font-size: 1.1rem;
-    color: var(--text-muted);
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink-dim);
     font-weight: 300;
+    margin-top: 14px;
 }
 
-/* Divisor */
 .divider {
-    width: 60px;
+    width: 50px;
     height: 2px;
     background-color: var(--accent);
     margin: 30px auto 0 auto;
 }
 
-/* ícones */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 24px; 
-    margin-top: 40px;
+    gap: 22px;
+    margin-top: 34px;
 }
 
 .social-icon {
-    color: #e0e0e0; /* Cinza claro/branco off-white para o modo dark */
+    color: #d4d4db;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Efeito de elevação (lift) e mudança de cor ao passar o mouse */
-.social-icon:hover {
-    color: #fff; /* Fica totalmente branco */
-    transform: translateY(-4px) scale(1.1); /* Sobe um pouquinho e dá um leve zoom */
+.social-icon:hover,
+.social-icon:focus-visible {
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.1);
 }
 
-/* Sistema de Grade para os Projetos */
+/* ============================================
+   Filtros
+   ============================================ */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+}
+
+.filter-pill {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+}
+
+.filter-pill:hover,
+.filter-pill:focus-visible {
+    color: var(--ink);
+    border-color: rgba(77, 91, 224, 0.4);
+}
+
+.filter-pill.is-active {
+    color: #ffffff;
+    background-color: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+/* ============================================
+   Grid
+   ============================================ */
 .portfolio-grid {
+    list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 40px;
@@ -90,142 +157,255 @@ body {
     margin: 0 auto;
 }
 
-/* Estilo Base do Cartão */
 .card {
-    background-color: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda muito fina e sutil */
-    border-radius: 4px; /* Cantos menos arredondados transmitem mais seriedade técnica */
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s ease,
+                border-color 0.4s ease, box-shadow 0.4s ease;
+    transition-delay: calc(min(var(--i, 0), 6) * 70ms);
+}
+
+.card.pre-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.card.pre-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 0%), var(--accent-soft), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card:hover::before,
+.card:focus-within::before {
+    opacity: 1;
+}
+
+.card:hover,
+.card:focus-within {
+    transform: translateY(-8px);
+    border-color: rgba(77, 91, 224, 0.35);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.card-link {
+    color: inherit;
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    
-    /* Animação do quadrado inteiro */
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
-                border-color 0.4s ease, 
-                box-shadow 0.4s ease;
+    height: 100%;
 }
 
-/* Quando o mouse passa em cima */
-.card:hover {
-    transform: translateY(-10px); /* Levanta o quadrado */
-    border-color: rgba(89, 100, 197, 0.3); /* Borda ganha um tom dourado sutil */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Sombra mais profunda */
-}
-
-/* Container da Imagem */
-.card-img-wrapper {
+.card-media {
+    position: relative;
     width: 100%;
-    height: 260px;
+    height: 250px;
     overflow: hidden;
 }
 
-/* A Imagem em si */
+.card-index {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #fff;
+    background: rgba(10, 10, 13, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 4px 9px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 .card-img {
     width: 100%;
     height: 100%;
-    background-color: #222;
+    background-color: #1c1c22;
     background-size: cover;
     background-position: center;
-    
-    /* Animação do Zoom */
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* No hover do cartão, a imagem dá zoom in */
-.card:hover .card-img {
-    transform: scale(1.08);
+.card:hover .card-img,
+.card:focus-within .card-img {
+    transform: scale(1.06);
 }
 
-/* Área de Texto */
-.card-info {
-    padding: 30px;
+.card-body {
+    padding: 26px 28px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 2;
 }
 
-.card-info span {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.card-category {
+    font-size: 0.8rem;
     color: var(--accent);
-    margin-bottom: 12px;
     font-weight: 500;
+    margin-bottom: 10px;
 }
 
-.card-info h2 {
+.card-body h2 {
     font-family: var(--font-title);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: #ffffff;
-    margin-bottom: 15px;
-    
-    /* Transição de cor do título */
+    margin-bottom: 12px;
     transition: color 0.3s ease;
 }
 
-.card:hover .card-info h2 {
+.card:hover .card-body h2,
+.card:focus-within .card-body h2 {
     color: var(--accent);
 }
 
-.card-info p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
+.card-body p {
+    font-size: 0.92rem;
+    color: var(--ink-dim);
     font-weight: 300;
     line-height: 1.7;
 }
 
-/* Responsividade para celulares */
-/* Tablets e Celulares Maiores */
-@media (max-width: 768px) {
-    body {
-        /* Reduz o respiro no topo e laterais para aproveitar melhor a tela */
-        padding: 60px 15px; 
+.card--pending {
+    cursor: default;
+}
+
+.card--pending .card-media,
+.card--pending .card-body {
+    padding: 0;
+}
+
+.card--pending .card-media {
+    height: 250px;
+}
+
+.card--pending .card-img {
+    filter: grayscale(70%) brightness(0.55);
+}
+
+.card--pending .card-body {
+    padding: 26px 28px;
+}
+
+.card--pending:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--line);
+}
+
+.card--pending:hover .card-img {
+    transform: none;
+}
+
+.pending-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-dim);
+    background: rgba(10, 10, 13, 0.75);
+    border: 1px solid var(--line);
+    padding: 4px 9px;
+    border-radius: 4px;
+}
+
+.card[hidden] {
+    display: none;
+}
+
+/* ============================================
+   Rodapé
+   ============================================ */
+.site-footer {
+    text-align: center;
+    margin-top: 90px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-dim);
+}
+
+/* ============================================
+   Acessibilidade
+   ============================================ */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
-    
-    .hero h1 {
-        font-size: 2.2rem; /* Ajuste proporcional */
-    }
-    
-    .hero h2 {
-        font-size: 1.8rem; /* Adicionado o h2 que estava faltando! */
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .portfolio-grid {
-        /* A grande sacada: força 1 única coluna que ocupa 100% da tela, sem estourar o limite */
-        grid-template-columns: 1fr; 
-        gap: 30px;
-    }
-    
-    .card-img-wrapper {
-        height: 220px;
+    .card {
+        opacity: 1;
+        transform: none;
     }
 }
 
-/* Celulares Menores (Telas mais estreitas) */
-@media (max-width: 480px) {
+/* ============================================
+   Responsividade
+   ============================================ */
+@media (max-width: 768px) {
     body {
-        padding: 40px 15px;
+        padding: 60px 16px;
     }
 
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2.1rem;
     }
-    
-    .hero h2 {
-        font-size: 1.5rem;
+
+    .hero-desc {
+        font-size: 1rem;
     }
-    
-    /* Deixa o conteúdo do cartão um pouco mais compacto */
-    .card-info {
-        padding: 20px; 
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
     }
-    
-    .card-info h2 {
-        font-size: 1.3rem;
+
+    .card-media,
+    .card--pending .card-media {
+        height: 210px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 45px 14px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .card-body,
+    .card--pending .card-body {
+        padding: 20px;
+    }
+
+    .card-body h2 {
+        font-size: 1.25rem;
     }
 }
