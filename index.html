@@ -48,35 +48,36 @@
   <button class="filter-pill" data-filter="react">React</button>
   <button class="filter-pill" data-filter="landing">Landing Page</button>
   <button class="filter-pill" data-filter="python">Full-Stack Python</button>
+  <button class="filter-pill" data-filter="qa">Testes &amp; QA</button>
 </nav>
 
 <main>
 <ul class="portfolio-grid" id="portfolio-grid">
 
-  <li class="card" data-category="webapp python" style="--i:0">
-    <a href="https://github.com/TheHenrique/twitter-clone" class="card-link" target="_blank" rel="noopener">
-      <div class="card-media">
-        <span class="card-index">01</span>
-        <div class="card-img" style="background-image: url('Fotos/12.png');"></div>
-      </div>
-      <div class="card-body">
-        <p class="card-category">Full-Stack & API · Código no GitHub</p>
-        <h2>Twitter Clone</h2>
-        <p>Projeto final do curso Full Stack Python (EBAC): um clone funcional do Twitter construído com Django. A aplicação é monolítica (views + templates) e também expõe uma API REST completa via Django REST Framework sobre os mesmos dados — com autenticação, sistema de seguir/deixar de seguir, feed personalizado, curtidas e comentários. Banco PostgreSQL, deploy com Docker no Render.</p>
-      </div>
-    </a>
-  </li>
-
-  <li class="card" data-category="webapp" style="--i:1">
+  <li class="card" data-category="webapp" style="--i:0">
     <a href="https://gestao-uber.vercel.app/" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">02</span>
+        <span class="card-index">01</span>
         <div class="card-img" style="background-image: url('Fotos/14.png');"></div>
       </div>
       <div class="card-body">
         <p class="card-category">Web App & Sistema de Gestão</p>
         <h2>Meus Ganhos</h2>
         <p>Sistema web para motoristas de aplicativo controlarem ganhos e despesas do dia a dia — registro de corridas, gastos por categoria (combustível, manutenção, outros) e um painel com saldo líquido filtrável por período. Construído com Next.js, autenticação própria e banco de dados Postgres, responsivo para uso no celular durante o expediente.</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card" data-category="webapp" style="--i:1">
+    <a href="https://sparking-livery-viewer.vercel.app/" class="card-link" target="_blank" rel="noopener">
+      <div class="card-media">
+        <span class="card-index">02</span>
+        <div class="card-img" style="background-image: url('Fotos/15.png');"></div>
+      </div>
+      <div class="card-body">
+        <p class="card-category">Web App 3D &amp; Ferramentas</p>
+        <h2>Sparking GT3 Livery Viewer</h2>
+        <p>Site para visualizar skins (PNG, em qualquer resolução) nos carros GT3 do mod Sparking GT3 do rFactor 1, em 3D, direto no navegador. A interface usa Three.js sem etapa de build e carrega os modelos em .glb. Os carros são convertidos do formato do jogo por um script em Python (numpy + Pillow), que seleciona as malhas do maior nível de detalhe e centraliza as rodas nos arcos automaticamente. Deploy estático na Vercel.</p>
       </div>
     </a>
   </li>
@@ -151,10 +152,24 @@
     </a>
   </li>
 
-  <li class="card" data-category="frontend" style="--i:7">
-    <a href="https://ebac-shoes-mu-nine.vercel.app/" class="card-link" target="_blank" rel="noopener">
+  <li class="card" data-category="webapp python" style="--i:7">
+    <a href="https://github.com/TheHenrique/twitter-clone" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
         <span class="card-index">08</span>
+        <div class="card-img" style="background-image: url('Fotos/12.png');"></div>
+      </div>
+      <div class="card-body">
+        <p class="card-category">Full-Stack & API · Código no GitHub</p>
+        <h2>Twitter Clone</h2>
+        <p>Projeto final do curso Full Stack Python (EBAC): um clone funcional do Twitter construído com Django. A aplicação é monolítica (views + templates) e também expõe uma API REST completa via Django REST Framework sobre os mesmos dados — com autenticação, sistema de seguir/deixar de seguir, feed personalizado, curtidas e comentários. Banco PostgreSQL, deploy com Docker no Render.</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card" data-category="frontend" style="--i:8">
+    <a href="https://ebac-shoes-mu-nine.vercel.app/" class="card-link" target="_blank" rel="noopener">
+      <div class="card-media">
+        <span class="card-index">09</span>
         <div class="card-img" style="background-image: url('Fotos/1.png');"></div>
       </div>
       <div class="card-body">
@@ -165,10 +180,10 @@
     </a>
   </li>
 
-  <li class="card" data-category="frontend" style="--i:8">
+  <li class="card" data-category="frontend" style="--i:9">
     <a href="https://projeto-3-eta-red.vercel.app/" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">09</span>
+        <span class="card-index">10</span>
         <div class="card-img" style="background-image: url('Fotos/5.png');"></div>
       </div>
       <div class="card-body">
@@ -179,10 +194,10 @@
     </a>
   </li>
 
-  <li class="card" data-category="landing" style="--i:9">
+  <li class="card" data-category="landing" style="--i:10">
     <a href="https://landing-page-event-indol.vercel.app/" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">10</span>
+        <span class="card-index">11</span>
         <div class="card-img" style="background-image: url('Fotos/6.png');"></div>
       </div>
       <div class="card-body">
@@ -193,10 +208,10 @@
     </a>
   </li>
 
-  <li class="card" data-category="react webapp" style="--i:10">
+  <li class="card" data-category="react webapp" style="--i:11">
     <a href="https://calculadora-imc-react-two-tan.vercel.app/" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">11</span>
+        <span class="card-index">12</span>
         <div class="card-img" style="background-image: url('Fotos/9.png');"></div>
       </div>
       <div class="card-body">
@@ -207,10 +222,24 @@
     </a>
   </li>
 
-  <li class="card" data-category="python" style="--i:11">
+  <li class="card" data-category="qa" style="--i:12">
+    <a href="https://github.com/TheHenrique/TCC-EBAC-QE" class="card-link" target="_blank" rel="noopener">
+      <div class="card-media">
+        <span class="card-index">13</span>
+        <div class="card-img" style="background-image: url('Fotos/16.png');"></div>
+      </div>
+      <div class="card-body">
+        <p class="card-category">Qualidade de Software · Código no GitHub</p>
+        <h2>TCC — Automação de Testes (EBAC Shop)</h2>
+        <p>Trabalho de conclusão do curso de Engenheiro de Qualidade de Software (EBAC): estratégia e automação de testes para o e-commerce EBAC Shop. Reúne testes de interface com Cypress e Page Objects, testes da API de cupons com Supertest e validação de contrato, testes mobile no Android com WebdriverIO, teste de carga com K6, critérios de aceitação em Gherkin e integração contínua com GitHub Actions.</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card" data-category="python" style="--i:13">
     <a href="https://github.com/TheHenrique/bookstore" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">12</span>
+        <span class="card-index">14</span>
         <div class="card-img" style="background-image: url('Fotos/13.png');"></div>
       </div>
       <div class="card-body">
@@ -221,10 +250,10 @@
     </a>
   </li>
 
-  <li class="card" data-category="frontend" style="--i:12">
+  <li class="card" data-category="frontend" style="--i:14">
     <a href="https://projeto-bootstrap-brown.vercel.app/" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">13</span>
+        <span class="card-index">15</span>
         <div class="card-img" style="background-image: url('Fotos/3.png');"></div>
       </div>
       <div class="card-body">
@@ -235,10 +264,10 @@
     </a>
   </li>
 
-  <li class="card" data-category="frontend" style="--i:13">
+  <li class="card" data-category="frontend" style="--i:15">
     <a href="https://meu-portfolio-xi-ten.vercel.app/" class="card-link" target="_blank" rel="noopener">
       <div class="card-media">
-        <span class="card-index">14</span>
+        <span class="card-index">16</span>
         <div class="card-img" style="background-image: url('Fotos/2.png');"></div>
       </div>
       <div class="card-body">
